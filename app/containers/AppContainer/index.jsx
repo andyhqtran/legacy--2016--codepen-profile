@@ -23,6 +23,10 @@ class AppContainer extends Component {
   }
 
   componentWillMount() {
+    this.setState({
+      windowWidth: window.innerWidth,
+    });
+
     window.addEventListener('resize', this._handleResize.bind(this));
     window.addEventListener('scroll', this._onScroll.bind(this));
   }
@@ -34,7 +38,7 @@ class AppContainer extends Component {
 
   _handleResize() {
     this.setState({
-      windowWidth: window.innerWidth
+      windowWidth: window.innerWidth,
     });
   }
 
