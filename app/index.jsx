@@ -11,6 +11,7 @@ import './style.scss';
 import { Container, Row, Column } from './components/Grid';
 import Header from './components/Header';
 import Card, { CardHeader, CardContent } from './components/Card';
+import SuggestionsCard from './components/SuggestionsCard';
 import TrendingCard from './components/TrendingCard';
 import UserCard from './components/UserCard';
 
@@ -55,7 +56,9 @@ class App extends Component {
               <TrendingCard />
             </Column>
             <Column size={6}></Column>
-            <Column size={3}></Column>
+            <Column size={3}>
+              <SuggestionsCard />
+            </Column>
           </Row>
         </Container>
       </div>

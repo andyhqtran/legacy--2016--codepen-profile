@@ -8,6 +8,7 @@ $gutters: 24px;
   max-width: 100%;
   min-width: 100%;
   padding: 0 ($gutters / 2);
+  box-sizing: border-box;
 
   @for $i from 1 through $columns {
     &--#{$i} {
