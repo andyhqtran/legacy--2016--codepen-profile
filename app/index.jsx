@@ -8,7 +8,7 @@ import { render } from 'react-dom';
  * Internal dependencies
  */
 import './style.scss';
-import Routes from './routes';
+import Routes from './routes.jsx';
 
 import { Container, Row, Column } from './components/Grid';
 import Header from './components/Header';
