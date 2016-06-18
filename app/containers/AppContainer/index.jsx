@@ -23,11 +23,19 @@ class AppContainer extends Component {
   }
 
   componentWillMount() {
+    window.addEventListener('resize', this._handleResize.bind(this));
     window.addEventListener('scroll', this._onScroll.bind(this));
   }
 
   componentWillUnmount() {
+    window.removeEventListener('resize', this._handleResize);
     window.removeEventListener('scroll', this._onScroll);
+  }
+
+  _handleResize() {
+    this.setState({
+      windowWidth: window.innerWidth
+    });
   }
 
   _onScroll() {
@@ -48,18 +56,18 @@ class AppContainer extends Component {
         <Header fixed={this.state.fixedHeader} />
         <Container>
           <Row>
-            <Column size={3}>
+            <Column size={this.state.windowWidth >= 960 ? 3 : 4}>
               <UserCard user={this.state.user} />
               <TrendingCard />
+
+              {this.state.windowWidth >= 960 ? '' : <SuggestionsCard />}
             </Column>
-            <Column size={6}>
+            <Column size={this.state.windowWidth >= 960 ? 6 : 8}>
               {this.props.children && cloneElement(this.props.children, {
                 user: this.state.user,
               })}
             </Column>
-            <Column size={3}>
-              <SuggestionsCard />
-            </Column>
+            {this.state.windowWidth >= 960 ? <Column size={3}><SuggestionsCard /></Column> : ''}
           </Row>
         </Container>
       </div>

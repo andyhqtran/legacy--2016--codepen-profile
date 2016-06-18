@@ -12,5 +12,10 @@ body {
 }
 
 .app {
+  min-width: 768px;
   padding: 80px 0 24px;
+
+  .header {
+    min-width: 768px;
+  }
 }
