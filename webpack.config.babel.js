@@ -31,7 +31,7 @@ const config = {
   module: {
     loaders: [
       {
-        test: /\.(jpg|png)$/,
+        test: /\.(jpg|png|svg)$/,
         loader: 'file?name=[path][name].[ext]',
       },
       {

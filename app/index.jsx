@@ -11,6 +11,7 @@ import './style.scss';
 import { Container, Row, Column } from './components/Grid';
 import Header from './components/Header';
 import Card, { CardHeader, CardContent } from './components/Card';
+import TrendingCard from './components/TrendingCard';
 import UserCard from './components/UserCard';
 
 class App extends Component {
@@ -51,6 +52,7 @@ class App extends Component {
           <Row>
             <Column size={3}>
               <UserCard user={this.state.user} />
+              <TrendingCard />
             </Column>
             <Column size={6}></Column>
             <Column size={3}></Column>
