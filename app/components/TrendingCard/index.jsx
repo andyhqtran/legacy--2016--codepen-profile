@@ -72,7 +72,7 @@ class TrendingCard extends Component {
         key={`trending-item-${key}`}
         className="trending__item"
       >
-        <img className="trending__icon" src={TrendingIcon} alt="Trending Icon" />
+        <span className="trending__icon" dangerouslySetInnerHTML={{ __html: TrendingIcon }} />
         <div className="trending__info">
           <div className="trending__title">
             <a href={item.url}>{item.title}</a>
@@ -86,7 +86,7 @@ class TrendingCard extends Component {
   render() {
     return (
       <Card className="card--trending">
-        <CardHeader title="Trending" />
+        <CardHeader>Trending</CardHeader>
         <CardContent>
           <div className="trending">
             {this.state.trending.map(this._renderItem.bind(this))}

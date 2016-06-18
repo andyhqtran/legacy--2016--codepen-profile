@@ -13,27 +13,29 @@ import './style.scss';
  * Local variables
  */
 const propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
+  src: PropTypes.string.isRequired,
   style: PropTypes.object,
 };
 
-const defaultProps = {};
+const defaultProps = {
+  src: 'http://codepen.io',
+};
 
 /**
- * <CardHeader />
+ * <CardFrame />
  */
-const CardHeader = (props) => {
-  let classes = cx('card__header', props.className);
+const CardFrame = (props) => {
+  let classes = cx('card__frame', props.className);
 
   return (
     <div className={classes}>
-      {props.children}
+      <iframe src={props.src} />
     </div>
   );
 };
 
-CardHeader.propTypes = propTypes;
-CardHeader.defaultProps = defaultProps;
+CardFrame.propTypes = propTypes;
+CardFrame.defaultProps = defaultProps;
 
-export default CardHeader;
+export default CardFrame;

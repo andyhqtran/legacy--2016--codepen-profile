@@ -42,7 +42,7 @@ class SuggestionsCard extends Component {
   render() {
     return (
       <Card className="card--suggestions">
-        <CardHeader title="Suggestions for You" />
+        <CardHeader>Suggestions for You</CardHeader>
         <CardContent>
 
         </CardContent>

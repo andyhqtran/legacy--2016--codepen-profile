@@ -31,8 +31,12 @@ const config = {
   module: {
     loaders: [
       {
-        test: /\.(jpg|png|svg)$/,
+        test: /\.(jpg|png)$/,
         loader: 'file?name=[path][name].[ext]',
+      },
+      {
+        test: /\.svg$/,
+        loader: 'raw',
       },
       {
         test: /\.jsx?$/,

@@ -10,6 +10,7 @@ import cx from 'classnames';
 import './style.scss';
 import CardContent from './components/CardContent';
 import CardFooter from './components/CardFooter';
+import CardFrame from './components/CardFrame';
 import CardHeader from './components/CardHeader';
 import CardThumbnail from './components/CardThumbnail';
 
@@ -37,4 +38,4 @@ const Card = (props) => {
 Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
 
-export { Card as default, CardContent, CardFooter, CardHeader, CardThumbnail };
+export { Card as default, CardContent, CardFooter, CardFrame, CardHeader, CardThumbnail };

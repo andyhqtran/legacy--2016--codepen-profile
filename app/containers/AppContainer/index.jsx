@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import React, { Component } from 'react';
+import React, { Component, cloneElement } from 'react';
 
 /**
  * Internal dependencies
@@ -53,7 +53,9 @@ class AppContainer extends Component {
               <TrendingCard />
             </Column>
             <Column size={6}>
-              {this.props.children}
+              {this.props.children && cloneElement(this.props.children, {
+                user: this.state.user,
+              })}
             </Column>
             <Column size={3}>
               <SuggestionsCard />
