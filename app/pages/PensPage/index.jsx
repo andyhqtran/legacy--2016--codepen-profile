@@ -11,26 +11,54 @@ import './style.scss';
 import ChatboxIcon from '../../assets/img/icon-chatbox.svg';
 import EyeIcon from '../../assets/img/icon-eye.svg';
 import HeartIcon from '../../assets/img/icon-heart.svg';
-import Card, { CardHeader, CardFrame, CardContent, CardFooter } from '../../components/Card';
+import Card, { CardHeader, CardFrame, CardThumbnail, CardContent, CardFooter } from '../../components/Card';
+import Loader from '../../components/Loader';
 
 class PensPage extends Component {
   constructor() {
     super();
 
     this.state = {
+      loading: true,
+      page: 1,
       pens: [],
+      canLoad: true,
     };
   }
   componentWillMount() {
     this._getPopularPens();
+
+    window.addEventListener('scroll', this._getLocation());
   }
 
   _getPopularPens() {
-    this.serverRequest = $.get(`http://cpv2api.com/pens/popular/${this.props.user}`, (result) => {
-      this.setState({
-        pens: result.data,
-      });
+    this.serverRequest = $.get(`http://cpv2api.com/pens/popular/${this.props.user}?page=${this.state.page}`, (result) => {
+      if (result.success) {
+        this.setState({
+          page: this.state.page + 1,
+          pens: this.state.pens.concat(result.data),
+          loading: false,
+        });
+      } else {
+        this.setState({
+          canLoad: false,
+        });
+      }
     });
+  }
+
+  _getLocation() {
+    if (this.state.canLoad) {
+      $(window).scroll(() => {
+        if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+          this.setState({
+            loading: true,
+          });
+
+          this._getPopularPens(this.state.page);
+        }
+      });
+    }
   }
 
   _renderCard(pen, index) {
@@ -40,7 +68,9 @@ class PensPage extends Component {
           <a href={`http://codepen.io/${pen.user.username}/pen/${pen.id}`}>{pen.title}</a>
           <a href={`http://codepen.io/${pen.user.username}`}><span>{pen.user.nicename}</span></a>
         </CardHeader>
-        <CardFrame src={`http://s.codepen.io/${pen.user.username}/debug/${pen.id}`} />
+        <a href={`http://codepen.io/${pen.user.username}/pen/${pen.id}`}>
+          <CardThumbnail src={pen.images.large} alt={pen.title} />
+        </a>
         <CardContent>
           <div dangerouslySetInnerHTML={{ __html: pen.details }} />
         </CardContent>
@@ -66,6 +96,7 @@ class PensPage extends Component {
     return (
       <div className="page page--pens">
         {this.state.pens.map(this._renderCard)}
+        {this.state.loading && this.state.canLoad ? <Loader /> : ''}
       </div>
     );
   }

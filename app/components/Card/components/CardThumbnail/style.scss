@@ -1,9 +1,9 @@
 /* Card Thumbnail */
 .card__thumbnail {
-  max-height: 100px;
   overflow: hidden;
 
   img {
+    display: block;
     width: 100%;
   }
 }
