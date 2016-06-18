@@ -2,19 +2,106 @@
  * External dependencies
  */
 import React, { Component, PropTypes } from 'react';
+import $ from 'jquery';
 
 /**
  * Internal dependencies
  */
-import Card, { CardContent } from '../../components/Card';
+import './style.scss';
+import ChatboxIcon from '../../assets/img/icon-chatbox.svg';
+import EyeIcon from '../../assets/img/icon-eye.svg';
+import HeartIcon from '../../assets/img/icon-heart.svg';
+import Card, { CardHeader, CardContent, CardFooter } from '../../components/Card';
+import Loader from '../../components/Loader';
 
 class PostsPage extends Component {
-  componentWillMount() {}
+  constructor() {
+    super();
+
+    this.state = {
+      canLoad: true,
+      hasPosts: true,
+      loading: true,
+      page: 1,
+      posts: [],
+    };
+  }
+  componentWillMount() {
+    this._getPopularPosts();
+
+    window.addEventListener('scroll', this._getLocation());
+  }
+
+  componentWillUmount() {
+    this.serverRequest.abort();
+  }
+
+  _getPopularPosts() {
+    this.serverRequest = $.get(`http://cpv2api.com/posts/popular/${this.props.user}?page=${this.state.page}`, (result) => {
+      if (result.success) {
+        this.setState({
+          hasPosts: true,
+          page: this.state.page + 1,
+          posts: this.state.posts.concat(result.data),
+          loading: false,
+        });
+      } else {
+        this.setState({
+          hasPosts: false,
+          canLoad: false,
+        });
+      }
+    });
+  }
+
+  _getLocation() {
+    if (this.state.canLoad) {
+      $(window).scroll(() => {
+        if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+          this.setState({
+            loading: true,
+          });
+
+          this._getPopularPosts(this.state.page);
+        }
+      });
+    }
+  }
+
+  _renderCard(post, index) {
+    return (
+      <Card key={`post-${index}`}>
+        <CardHeader>
+          <a href={post.link}>{post.title}</a>
+        </CardHeader>
+        <CardContent>
+          <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        </CardContent>
+        <CardFooter>
+          <div className="card__info card__info--hearts">
+            <span className="card__icon" dangerouslySetInnerHTML={{ __html: HeartIcon }} />
+            {post.loves}
+          </div>
+          <div className="card__info card__info--comments">
+            <div className="card__icon" dangerouslySetInnerHTML={{ __html: ChatboxIcon }} />
+            {post.comments}
+          </div>
+          <div className="card__info card__info--view">
+            <div className="card__icon" dangerouslySetInnerHTML={{ __html: EyeIcon }} />
+            {post.views}
+          </div>
+        </CardFooter>
+      </Card>
+    );
+  }
 
   render() {
     return (
-      <div>
-        <Card>Post</Card>
+      <div className="page page--posts">
+        {this.state.posts.length > 0 ?
+          this.state.posts.map(this._renderCard) : ''}
+        {this.state.hasPosts ? '' : <Card><CardContent>No posts available.</CardContent></Card>}
+        {this.state.loading && this.state.canLoad ? <Loader /> : ''}
       </div>
     );
   }

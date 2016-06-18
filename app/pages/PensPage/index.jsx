@@ -102,7 +102,7 @@ class PensPage extends Component {
   render() {
     return (
       <div className="page page--pens">
-        {this.state.pens[1] != null ?
+        {this.state.pens.length > 0 ?
           this.state.pens.map(this._renderCard) : ''}
         {this.state.hasPens ? '' : <Card><CardContent>No pens available.</CardContent></Card>}
         {this.state.loading && this.state.canLoad ? <Loader /> : ''}
