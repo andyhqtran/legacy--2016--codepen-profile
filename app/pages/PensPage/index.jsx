@@ -31,6 +31,10 @@ class PensPage extends Component {
     window.addEventListener('scroll', this._getLocation());
   }
 
+  componentWillUmount() {
+    this.serverRequest.abort();
+  }
+
   _getPopularPens() {
     this.serverRequest = $.get(`http://cpv2api.com/pens/popular/${this.props.user}?page=${this.state.page}`, (result) => {
       if (result.success) {

@@ -48,6 +48,10 @@ class UserCard extends Component {
     this._getPensCount();
   }
 
+  componentWillUmount() {
+    this.serverRequest.abort();
+  }
+
   _getUserData() {
     this.serverRequest = $.get(`http://cpv2api.com/profile/${this.props.user}`, (result) => {
       const data = result.data;

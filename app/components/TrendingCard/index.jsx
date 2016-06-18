@@ -39,6 +39,10 @@ class TrendingCard extends Component {
     this._getTrendingData();
   }
 
+  componentWillUmount() {
+    this.serverRequest.abort();
+  }
+
   _getTrendingData() {
     this.serverRequest = $.get('http://cpv2api.com/pens/popular', (result) => {
       $.each(result.data, (key, value) => {
