@@ -15,29 +15,25 @@ import './style.scss';
 const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  size: PropTypes.number,
   style: PropTypes.object,
 };
 
-const defaultProps = {
-  size: 12,
-};
+const defaultProps = {};
 
-const Column = (props) => {
-  if (props.size > 12) {
-    return false;
-  }
-
-  let classes = cx('column', `column--${props.size}`, props.className);
+/**
+ * <CardContent />
+ */
+const CardContent = (props) => {
+  let classes = cx('card__content', props.className);
 
   return (
-    <div className={classes} style={props.style}>
+    <div className={classes}>
       {props.children}
     </div>
   );
 };
 
-Column.propTypes = propTypes;
-Column.defaultProps = defaultProps;
+CardContent.propTypes = propTypes;
+CardContent.defaultProps = defaultProps;
 
-export default Column;
+export default CardContent;
