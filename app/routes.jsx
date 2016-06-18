@@ -2,7 +2,7 @@
  * External dependencies
  */
 import React from 'react';
-import { Router, IndexRoute, Route, Redirect, browserHistory } from 'react-router';
+import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 
 /**
  * Internal dependencies
@@ -10,7 +10,7 @@ import { Router, IndexRoute, Route, Redirect, browserHistory } from 'react-route
 import AppContainer from './containers/AppContainer';
 import CollectionsPage from './pages/CollectionsPage';
 import PensPage from './pages/PensPage';
-import PostsPage from '../pages/PostsPage';
+import PostsPage from './pages/PostsPage';
 
 const Routes = (
   <Router history={browserHistory}>
