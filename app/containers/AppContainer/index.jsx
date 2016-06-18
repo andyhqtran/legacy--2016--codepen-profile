@@ -2,22 +2,17 @@
  * External dependencies
  */
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
 /**
  * Internal dependencies
  */
-import './style.scss';
-import Routes from './routes';
+import { Container, Row, Column } from '../../components/Grid';
+import Header from '../../components/Header';
+import SuggestionsCard from '../../components/SuggestionsCard';
+import TrendingCard from '../../components/TrendingCard';
+import UserCard from '../../components/UserCard';
 
-import { Container, Row, Column } from './components/Grid';
-import Header from './components/Header';
-import Card, { CardHeader, CardContent } from './components/Card';
-import SuggestionsCard from './components/SuggestionsCard';
-import TrendingCard from './components/TrendingCard';
-import UserCard from './components/UserCard';
-
-class App extends Component {
+class AppContainer extends Component {
   constructor(props) {
     super(props);
 
@@ -49,7 +44,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <Header fixed={this.state.fixedHeader} />
         <Container>
           <Row>
@@ -57,7 +52,9 @@ class App extends Component {
               <UserCard user={this.state.user} />
               <TrendingCard />
             </Column>
-            <Column size={6}></Column>
+            <Column size={6}>
+              {this.props.children}
+            </Column>
             <Column size={3}>
               <SuggestionsCard />
             </Column>
@@ -68,4 +65,4 @@ class App extends Component {
   }
 }
 
-render(Routes, document.getElementById('root'));
+export default AppContainer;
