@@ -9,6 +9,9 @@ import cx from 'classnames';
  */
 import './style.scss';
 
+/**
+ * Local variables
+ */
 const propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,

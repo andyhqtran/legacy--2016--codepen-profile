@@ -1,0 +1,23 @@
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background: #FFF;
+  height: 56px;
+  border-bottom: 1px solid #EEE;
+
+  &--fixed {
+    box-shadow: 0 0 8px rgba(#000, 0.1);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 100%;
+  }
+}
