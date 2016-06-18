@@ -8,13 +8,17 @@ import { render } from 'react-dom';
  * Internal dependencies
  */
 import './style.scss';
+import { Container, Row, Column } from './components/Grid';
 import Header from './components/Header';
+import Card, { CardHeader, CardContent } from './components/Card';
+import UserCard from './components/UserCard';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      user: 'andytran',
       fixedHeader: false,
     };
   }
@@ -43,6 +47,15 @@ class App extends Component {
     return (
       <div>
         <Header fixed={this.state.fixedHeader} />
+        <Container>
+          <Row>
+            <Column size={3}>
+              <UserCard user={this.state.user} />
+            </Column>
+            <Column size={6}></Column>
+            <Column size={3}></Column>
+          </Row>
+        </Container>
       </div>
     );
   }

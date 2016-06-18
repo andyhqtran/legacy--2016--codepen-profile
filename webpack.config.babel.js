@@ -31,6 +31,10 @@ const config = {
   module: {
     loaders: [
       {
+        test: /\.(jpg|png)$/,
+        loader: 'file?name=[path][name].[ext]',
+      },
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ['react-hot', 'babel'],

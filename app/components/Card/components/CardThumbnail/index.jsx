@@ -8,17 +8,23 @@ import cx from 'classnames';
  * Internal dependencies
  */
 import './style.scss';
+import ThumbnailImage from '../../../../assets/img/placeholder.png';
 
 /**
  * Local variables
  */
 const propTypes = {
+  alt: PropTypes.string.isRequired,
   className: PropTypes.string,
   title: PropTypes.string,
+  src: PropTypes.string.isRequired,
   style: PropTypes.object,
 };
 
-const defaultProps = {};
+const defaultProps = {
+  alt: 'Card Thumbnail',
+  src: ThumbnailImage,
+};
 
 /**
  * <CardThumbnail />
@@ -28,7 +34,7 @@ const CardThumbnail = (props) => {
 
   return (
     <div className={classes}>
-      {props.title}
+      <img src={props.src} alt={props.title} />
     </div>
   );
 };
