@@ -19,10 +19,11 @@ class PensPage extends Component {
     super();
 
     this.state = {
+      canLoad: true,
+      hasPens: true,
       loading: true,
       page: 1,
       pens: [],
-      canLoad: true,
     };
   }
   componentWillMount() {
@@ -39,12 +40,14 @@ class PensPage extends Component {
     this.serverRequest = $.get(`http://cpv2api.com/pens/popular/${this.props.user}?page=${this.state.page}`, (result) => {
       if (result.success) {
         this.setState({
+          hasPens: true,
           page: this.state.page + 1,
           pens: this.state.pens.concat(result.data),
           loading: false,
         });
       } else {
         this.setState({
+          hasPens: false,
           canLoad: false,
         });
       }
@@ -100,8 +103,8 @@ class PensPage extends Component {
     return (
       <div className="page page--pens">
         {this.state.pens[1] != null ?
-          this.state.pens.map(this._renderCard) :
-          <Card><CardContent>No pens available.</CardContent></Card>}
+          this.state.pens.map(this._renderCard) : ''}
+        {this.state.hasPens ? '' : <Card><CardContent>No pens available.</CardContent></Card>}
         {this.state.loading && this.state.canLoad ? <Loader /> : ''}
       </div>
     );
