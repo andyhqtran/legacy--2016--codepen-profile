@@ -30,8 +30,8 @@ const users = [
     image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/217538/profile/profile-512_19.jpg',
   },
   {
-    name: 'mariemosley',
-    username: 'Marie Mosley',
+    name: 'Marie Mosley',
+    username: 'mariemosley',
     image: 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/652/profile/profile-512_10.jpg',
   },
   {
