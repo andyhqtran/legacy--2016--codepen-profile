@@ -37,6 +37,15 @@ class Nav extends Component {
           {item.children}
         </IndexLink>
       );
+    } else if (item.anchor) {
+      linkItem = (
+        <a
+          className="nav__link"
+          href={item.url}
+        >
+          {item.children}
+        </a>
+      );
     } else {
       linkItem = (
         <Link

@@ -8,6 +8,7 @@ import React, { Component, cloneElement } from 'react';
  */
 import { Container, Row, Column } from '../../components/Grid';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import SuggestionsCard from '../../components/SuggestionsCard';
 import TrendingCard from '../../components/TrendingCard';
 import UserCard from '../../components/UserCard';
@@ -65,13 +66,15 @@ class AppContainer extends Component {
               <TrendingCard />
 
               {this.state.windowWidth >= 960 ? '' : <SuggestionsCard />}
+              {this.state.windowWidth >= 960 ? '' : <Footer />}
             </Column>
             <Column size={this.state.windowWidth >= 960 ? 6 : 8}>
               {this.props.children && cloneElement(this.props.children, {
                 user: this.state.user,
               })}
             </Column>
-            {this.state.windowWidth >= 960 ? <Column size={3}><SuggestionsCard /></Column> : ''}
+            {this.state.windowWidth >= 960 ?
+              <Column size={3}><SuggestionsCard /><Footer /></Column> : ''}
           </Row>
         </Container>
       </div>
