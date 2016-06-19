@@ -21,7 +21,7 @@ class CollectionsPage extends Component {
 
     this.state = {
       canLoad: true,
-      hasCollectionss: true,
+      hasCollections: true,
       loading: true,
       page: 1,
       collections: [],
