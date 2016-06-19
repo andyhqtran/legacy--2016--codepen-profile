@@ -34,7 +34,7 @@ class Nav extends Component {
           activeClassName="nav__link--active"
           to={item.url}
         >
-          {item.children}
+          <span dangerouslySetInnerHTML={{ __html: item.children }} />
         </IndexLink>
       );
     } else if (item.anchor) {
@@ -42,9 +42,8 @@ class Nav extends Component {
         <a
           className="nav__link"
           href={item.url}
-        >
-          {item.children}
-        </a>
+          dangerouslySetInnerHTML={{ __html: item.children }}
+        />
       );
     } else {
       linkItem = (
@@ -53,7 +52,7 @@ class Nav extends Component {
           activeClassName="nav__link--active"
           to={item.url}
         >
-          {item.children}
+          <span dangerouslySetInnerHTML={{ __html: item.children }} />
         </Link>
       );
     }

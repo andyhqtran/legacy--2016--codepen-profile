@@ -50,6 +50,16 @@ const Header = (props) => {
     ],
   ];
 
+  let menuTwo = [
+    [
+      {
+        anchor: true,
+        url: 'http://codepen.io/andytran',
+        children: 'Follow on CodePen &#8594;',
+      },
+    ],
+  ];
+
   return (
     <header className={classes}>
       <Container>
@@ -58,7 +68,7 @@ const Header = (props) => {
           <Link to="/">
             <Logo color="#2C2C2C" />
           </Link>
-          <div />
+          <Nav menus={menuTwo} />
         </div>
       </Container>
     </header>
