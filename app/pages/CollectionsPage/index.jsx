@@ -8,9 +8,6 @@ import $ from 'jquery';
  * Internal dependencies
  */
 import './style.scss';
-import ChatboxIcon from '../../assets/img/icon-chatbox.svg';
-import EyeIcon from '../../assets/img/icon-eye.svg';
-import HeartIcon from '../../assets/img/icon-heart.svg';
 import Card, { CardHeader, CardContent, CardFooter } from '../../components/Card';
 import Button from '../../components/Button';
 import Loader from '../../components/Loader';
