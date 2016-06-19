@@ -11,6 +11,7 @@ import AppContainer from './containers/AppContainer';
 import CollectionsPage from './pages/CollectionsPage';
 import PensPage from './pages/PensPage';
 import PostsPage from './pages/PostsPage';
+import ErrorPage from './pages/ErrorPage';
 
 const Routes = (
   <Router history={browserHistory}>
@@ -19,6 +20,7 @@ const Routes = (
       <Route path="pens" component={PensPage} />
       <Route path="posts" component={PostsPage} />
       <Route path="collections" component={CollectionsPage} />
+      <Route path="*" component={ErrorPage} />
     </Route>
   </Router>
 );
