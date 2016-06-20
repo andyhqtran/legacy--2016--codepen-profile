@@ -94,7 +94,7 @@ class UserCard extends Component {
   render() {
     return (
       <Card className="card--user">
-        <CardThumbnail />
+        <CardThumbnail src={this.state.avatar} />
         <CardContent>
           <div className="user">
             <div className="user__avatar">
