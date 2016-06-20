@@ -41,7 +41,7 @@ const Button = (props) => {
     'button--primary': props.primary,
     'button--block': props.block,
     'button--outline': props.outline,
-  });
+  }, props.className);
 
   return (
     <button

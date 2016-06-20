@@ -2,11 +2,14 @@
  * External dependencies
  */
 import React, { Component, cloneElement } from 'react';
+import $ from 'jquery';
 
 /**
  * Internal dependencies
  */
+import ArrowUpIcon from '../../assets/img/icon-arrow-up.svg';
 import { Container, Row, Column } from '../../components/Grid';
+import Button from '../../components/Button';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import SuggestionsCard from '../../components/SuggestionsCard';
@@ -18,9 +21,12 @@ class AppContainer extends Component {
     super(props);
 
     this.state = {
+      backToTop: false,
       user: 'andytran',
       fixedHeader: false,
     };
+
+    this._handleToTop = this._handleToTop.bind(this);
   }
 
   componentWillMount() {
@@ -44,15 +50,29 @@ class AppContainer extends Component {
   }
 
   _onScroll() {
-    if (window.pageYOffset > 0 && this.state.fixedHeader === false) {
+    if (window.pageYOffset > 0 && !this.state.fixedHeader) {
       this.setState({
         fixedHeader: true,
       });
-    } else if (window.pageYOffset <= 0 && this.state.fixedHeader === true) {
+    } else if (window.pageYOffset <= 0 && this.state.fixedHeader) {
       this.setState({
         fixedHeader: false,
       });
     }
+
+    if (window.pageYOffset > 300 && !this.state.backToTop) {
+      this.setState({
+        backToTop: true,
+      });
+    } else if (window.pageYOffset < 300 && this.state.backToTop) {
+      this.setState({
+        backToTop: false,
+      });
+    }
+  }
+
+  _handleToTop() {
+    $('html, body').animate({ scrollTop: 0 });
   }
 
   render() {
@@ -77,6 +97,16 @@ class AppContainer extends Component {
               <Column size={3}><SuggestionsCard /><Footer /></Column> : ''}
           </Row>
         </Container>
+        <Button
+          className={
+            this.state.backToTop ?
+              'button--back-to-top button--visible' :
+              'button--back-to-top button--hidden'
+          }
+          onClick={this._handleToTop}
+        >
+          <span dangerouslySetInnerHTML={{ __html: ArrowUpIcon }} />
+        </Button>
       </div>
     );
   }

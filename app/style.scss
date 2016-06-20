@@ -68,4 +68,23 @@ body {
   .header {
     min-width: 768px;
   }
+
+  .button--back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 0;
+    background: #FFF;
+    border: 1px solid #EEE;
+    border-right: 0;
+    transition: 0.2s ease;
+
+    &,
+    &.button--hidden {
+      transform: translate(100%, 0);
+    }
+
+    &.button--visible {
+      transform: none;
+    }
+  }
 }
