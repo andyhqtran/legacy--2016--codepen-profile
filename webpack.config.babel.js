@@ -1,5 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackPluginTemplate from 'html-webpack-template';
 
@@ -51,6 +52,11 @@ const config = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(['dist', 'build'], {
+      root: __dirname,
+      verbose: true,
+      dry: false,
+    }),
     new HtmlWebpackPlugin({
       inject: false,
       template: HtmlWebpackPluginTemplate,

@@ -2,6 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import precss from 'precss';
 import autoprefixer from 'autoprefixer';
+import CleanWebpackPlugin from 'clean-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackPluginTemplate from 'html-webpack-template';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
@@ -47,6 +48,11 @@ const config = {
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
       },
+    }),
+    new CleanWebpackPlugin(['dist', 'build'], {
+      root: __dirname,
+      verbose: true,
+      dry: false,
     }),
     new HtmlWebpackPlugin({
       inject: false,
