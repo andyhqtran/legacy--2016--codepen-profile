@@ -1,5 +1,7 @@
 import path from 'path';
 import webpack from 'webpack';
+import precss from 'precss';
+import autoprefixer from 'autoprefixer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import HtmlWebpackPluginTemplate from 'html-webpack-template';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
@@ -36,7 +38,7 @@ const config = {
       {
         test: /\.scss$/i,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass'),
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
       },
     ],
   },
@@ -60,6 +62,7 @@ const config = {
     new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 15 }),
     new webpack.optimize.MinChunkSizePlugin({ minChunkSize: 10000 }),
   ],
+  postcss: () => [precss, autoprefixer],
 };
 
 export default config;
