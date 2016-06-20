@@ -55,6 +55,7 @@ class PensPage extends Component {
       } else {
         this.setState({
           hasPens: false,
+          loading: false,
         });
       }
     });
@@ -111,7 +112,7 @@ class PensPage extends Component {
         {this.state.pens.length > 0 ?
           this.state.pens.map(this._renderCard) : ''}
         {this.state.hasPens ? '' : <Card><CardContent>No pens available.</CardContent></Card>}
-        {this.state.loading && this.state.canLoad ? <Loader /> : ''}
+        {this.state.loading ? <Loader /> : ''}
       </div>
     );
   }

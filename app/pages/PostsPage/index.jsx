@@ -55,6 +55,7 @@ class PostsPage extends Component {
       } else {
         this.setState({
           hasPosts: false,
+          loading: false,
         });
       }
     });
@@ -107,7 +108,7 @@ class PostsPage extends Component {
         {this.state.posts.length > 0 ?
           this.state.posts.map(this._renderCard) : ''}
         {this.state.hasPosts ? '' : <Card><CardContent>No posts available.</CardContent></Card>}
-        {this.state.loading && this.state.canLoad ? <Loader /> : ''}
+        {this.state.loading ? <Loader /> : ''}
       </div>
     );
   }

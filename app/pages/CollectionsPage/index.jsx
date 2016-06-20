@@ -54,6 +54,7 @@ class CollectionsPage extends Component {
       } else {
         this.setState({
           hasCollections: false,
+          loading: false,
         });
       }
     });
@@ -96,7 +97,7 @@ class CollectionsPage extends Component {
         {this.state.collections.length > 0 ?
           this.state.collections.map(this._renderCard) : ''}
         {this.state.hasCollections ? '' : <Card><CardContent>No collections available.</CardContent></Card>}
-        {this.state.loading && this.state.canLoad ? <Loader /> : ''}
+        {this.state.loading ? <Loader /> : ''}
       </div>
     );
   }

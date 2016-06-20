@@ -55,6 +55,7 @@ class FollowingPage extends Component {
       } else {
         this.setState({
           hasFollowers: false,
+          loading: false,
         });
       }
     });
@@ -107,7 +108,7 @@ class FollowingPage extends Component {
         {this.state.followers.length > 0 ?
           this.state.followers.map(this._renderCard) : ''}
         {this.state.hasFollowers ? '' : <Card className="card--error"><CardContent>No followers available.</CardContent></Card>}
-        {this.state.loading && this.state.canLoad ? <Loader /> : ''}
+        {this.state.loading ? <Loader /> : ''}
       </div>
     );
   }
