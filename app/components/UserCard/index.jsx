@@ -2,6 +2,7 @@
  * External dependencies
  */
 import React, { Component, PropTypes } from 'react';
+import { Link } from 'react-router';
 import $ from 'jquery';
 
 /**
@@ -113,20 +114,26 @@ class UserCard extends Component {
             </h2>
 
             <div className="user__footer">
-              <div className="user__footer-item user__footer-item--pens">
-                {this.state.pens}
-                <span>Pens</span>
-              </div>
+              <Link to="/pens">
+                <div className="user__footer-item user__footer-item--pens">
+                  {this.state.pens}
+                  <span>Pens</span>
+                </div>
+              </Link>
 
-              <div className="user__footer-item user__footer-item--followers">
-                {this.state.followers}
-                <span>Followers</span>
-              </div>
+              <Link to="/followers">
+                <div className="user__footer-item user__footer-item--followers">
+                  {this.state.followers}
+                  <span>Followers</span>
+                </div>
+              </Link>
 
-              <div className="user__footer-item user__footer-item--following">
-                {this.state.following}
-                <span>Following</span>
-              </div>
+              <Link to="/following">
+                <div className="user__footer-item user__footer-item--following">
+                  {this.state.following}
+                  <span>Following</span>
+                </div>
+              </Link>
             </div>
           </div>
         </CardContent>
