@@ -11,6 +11,7 @@ import './style.scss';
 import TrendingIcon from '../../assets/img/icon-trending.svg';
 import Card, { CardHeader, CardContent, CardFooter } from '../Card';
 import Button from '../Button';
+import Loader from '../Loader';
 
 /**
  * Local variables
@@ -28,6 +29,7 @@ class TrendingCard extends Component {
     super();
 
     this.state = {
+      loading: true,
       more: false,
       trending: [],
     };
@@ -54,6 +56,7 @@ class TrendingCard extends Component {
         };
 
         this.setState({
+          loading: false,
           trending: this.state.trending.concat([newData]),
         });
       });
@@ -93,7 +96,7 @@ class TrendingCard extends Component {
         <CardHeader>Trending</CardHeader>
         <CardContent>
           <div className="trending">
-            {this.state.trending.map(this._renderItem.bind(this))}
+            {this.state.loading ? <Loader /> : this.state.trending.map(this._renderItem.bind(this))}
           </div>
         </CardContent>
         <CardFooter>
