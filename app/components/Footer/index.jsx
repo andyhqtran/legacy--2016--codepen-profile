@@ -33,7 +33,7 @@ const Footer = (props) => {
       {
         anchor: true,
         url: 'http://andytran.me',
-        children: 'Portfolio',
+        children: 'Website',
       },
       {
         anchor: true,
@@ -59,6 +59,11 @@ const Footer = (props) => {
         anchor: true,
         url: 'https://instagram.com/helloandytran',
         children: 'Instagram',
+      },
+      {
+        anchor: true,
+        url: 'http://cpv2api.com/',
+        children: 'API',
       },
     ],
   ];
