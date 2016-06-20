@@ -34,12 +34,19 @@ class PensPage extends Component {
 
   componentWillUmount() {
     this.serverRequest.abort();
+
+    window.removeEventListener('scroll', this._getLocation());
   }
 
   _getPopularPens() {
+    this.setState({
+      canLoad: false,
+    });
+
     this.serverRequest = $.get(`http://cpv2api.com/pens/popular/${this.props.user}?page=${this.state.page}`, (result) => {
       if (result.success) {
         this.setState({
+          canLoad: true,
           hasPens: true,
           page: this.state.page + 1,
           pens: this.state.pens.concat(result.data),
@@ -48,7 +55,6 @@ class PensPage extends Component {
       } else {
         this.setState({
           hasPens: false,
-          canLoad: false,
         });
       }
     });

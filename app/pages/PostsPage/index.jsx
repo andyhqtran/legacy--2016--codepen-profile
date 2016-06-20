@@ -34,12 +34,19 @@ class PostsPage extends Component {
 
   componentWillUmount() {
     this.serverRequest.abort();
+
+    window.removeEventListener('scroll', this._getLocation());
   }
 
   _getPopularPosts() {
+    this.setState({
+      canLoad: false,
+    });
+
     this.serverRequest = $.get(`http://cpv2api.com/posts/popular/${this.props.user}?page=${this.state.page}`, (result) => {
       if (result.success) {
         this.setState({
+          canLoad: true,
           hasPosts: true,
           page: this.state.page + 1,
           posts: this.state.posts.concat(result.data),
@@ -48,7 +55,6 @@ class PostsPage extends Component {
       } else {
         this.setState({
           hasPosts: false,
-          canLoad: false,
         });
       }
     });

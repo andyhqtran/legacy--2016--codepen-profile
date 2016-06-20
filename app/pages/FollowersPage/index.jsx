@@ -34,12 +34,19 @@ class FollowersPage extends Component {
 
   componentWillUmount() {
     this.serverRequest.abort();
+
+    window.removeEventListener('scroll', this._getLocation());
   }
 
   _getPopularFollowers() {
+    this.setState({
+      canLoad: false,
+    });
+
     this.serverRequest = $.get(`http://cpv2api.com/followers/${this.props.user}?page=${this.state.page}`, (result) => {
       if (result.success) {
         this.setState({
+          canLoad: true,
           hasFollowers: true,
           page: this.state.page + 1,
           followers: this.state.followers.concat(result.data),
@@ -48,7 +55,6 @@ class FollowersPage extends Component {
       } else {
         this.setState({
           hasFollowers: false,
-          canLoad: false,
         });
       }
     });

@@ -18,35 +18,42 @@ class CollectionsPage extends Component {
 
     this.state = {
       canLoad: true,
+      collections: [],
       hasCollections: true,
       loading: true,
       page: 1,
-      collections: [],
     };
   }
+
   componentWillMount() {
     this._getPopularCollections();
 
-    window.addEventListener('scroll', this._getLocation());
+    window.addEventListener('scroll', this._getLocation.bind(this));
   }
 
   componentWillUmount() {
     this.serverRequest.abort();
+
+    window.removeEventListener('scroll', this._getLocation());
   }
 
   _getPopularCollections() {
+    this.setState({
+      canLoad: false,
+    });
+
     this.serverRequest = $.get(`http://cpv2api.com/collections/popular/${this.props.user}?page=${this.state.page}`, (result) => {
       if (result.success) {
         this.setState({
-          hasCollections: true,
-          page: this.state.page + 1,
+          canLoad: true,
           collections: this.state.collections.concat(result.data),
+          hasCollections: true,
           loading: false,
+          page: this.state.page + 1,
         });
       } else {
         this.setState({
           hasCollections: false,
-          canLoad: false,
         });
       }
     });
@@ -54,15 +61,13 @@ class CollectionsPage extends Component {
 
   _getLocation() {
     if (this.state.canLoad) {
-      $(window).scroll(() => {
-        if ($(window).scrollTop() + $(window).height() === $(document).height()) {
-          this.setState({
-            loading: true,
-          });
+      if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+        this.setState({
+          loading: true,
+        });
 
-          this._getPopularCollections(this.state.page);
-        }
-      });
+        this._getPopularCollections();
+      }
     }
   }
 
