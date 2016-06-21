@@ -25,17 +25,20 @@ class PensPage extends Component {
       page: 1,
       pens: [],
     };
+
+    this._getLocation = this._getLocation.bind(this);
   }
+
   componentWillMount() {
     this._getPopularPens();
 
-    window.addEventListener('scroll', this._getLocation());
+    window.addEventListener('scroll', this._getLocation);
   }
 
   componentWillUnmount() {
     this.serverRequest.abort();
 
-    window.removeEventListener('scroll', this._getLocation());
+    window.removeEventListener('scroll', this._getLocation);
   }
 
   _getPopularPens() {
@@ -63,15 +66,13 @@ class PensPage extends Component {
 
   _getLocation() {
     if (this.state.canLoad) {
-      $(window).scroll(() => {
-        if ($(window).scrollTop() + $(window).height() === $(document).height()) {
-          this.setState({
-            loading: true,
-          });
+      if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+        this.setState({
+          loading: true,
+        });
 
-          this._getPopularPens(this.state.page);
-        }
-      });
+        this._getPopularPens(this.state.page);
+      }
     }
   }
 
