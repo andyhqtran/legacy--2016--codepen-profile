@@ -12,6 +12,14 @@ import Card, { CardHeader, CardContent, CardFooter } from '../../components/Card
 import Button from '../../components/Button';
 import Loader from '../../components/Loader';
 
+const propTypes = {
+  user: PropTypes.string,
+};
+
+const defaultProps = {
+  user: 'andytran',
+};
+
 class CollectionsPage extends Component {
   constructor() {
     super();
@@ -98,11 +106,15 @@ class CollectionsPage extends Component {
       <div className="page page--collections">
         {this.state.collections.length > 0 ?
           this.state.collections.map(this._renderCard) : ''}
-        {this.state.hasCollections ? '' : <Card><CardContent>No collections available.</CardContent></Card>}
+        {this.state.hasCollections ?
+          '' : <Card><CardContent>No collections available.</CardContent></Card>}
         {this.state.loading ? <Loader /> : ''}
       </div>
     );
   }
 }
+
+CollectionsPage.propTypes = propTypes;
+CollectionsPage.defaultProps = defaultProps;
 
 export default CollectionsPage;

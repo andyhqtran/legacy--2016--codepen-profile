@@ -11,8 +11,16 @@ import './style.scss';
 import ChatboxIcon from '../../assets/img/icon-chatbox.svg';
 import EyeIcon from '../../assets/img/icon-eye.svg';
 import HeartIcon from '../../assets/img/icon-heart.svg';
-import Card, { CardHeader, CardFrame, CardThumbnail, CardContent, CardFooter } from '../../components/Card';
+import Card, { CardHeader, CardThumbnail, CardContent, CardFooter } from '../../components/Card';
 import Loader from '../../components/Loader';
+
+const propTypes = {
+  user: PropTypes.string,
+};
+
+const defaultProps = {
+  user: 'andytran',
+};
 
 class PensPage extends Component {
   constructor() {
@@ -118,5 +126,8 @@ class PensPage extends Component {
     );
   }
 }
+
+PensPage.propTypes = propTypes;
+PensPage.defaultProps = defaultProps;
 
 export default PensPage;

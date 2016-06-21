@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import React, { Component, cloneElement } from 'react';
+import React, { PropTypes, Component, cloneElement } from 'react';
 import $ from 'jquery';
 
 /**
@@ -15,6 +15,12 @@ import Footer from '../../components/Footer';
 import SuggestionsCard from '../../components/SuggestionsCard';
 import TrendingCard from '../../components/TrendingCard';
 import UserCard from '../../components/UserCard';
+
+const propTypes = {
+  children: PropTypes.node,
+};
+
+const defaultProps = {};
 
 class AppContainer extends Component {
   constructor(props) {
@@ -111,5 +117,8 @@ class AppContainer extends Component {
     );
   }
 }
+
+AppContainer.propTypes = propTypes;
+AppContainer.defaultProps = defaultProps;
 
 export default AppContainer;

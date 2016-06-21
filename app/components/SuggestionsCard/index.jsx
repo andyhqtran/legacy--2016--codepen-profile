@@ -2,7 +2,6 @@
  * External dependencies
  */
 import React, { Component, PropTypes } from 'react';
-import $ from 'jquery';
 
 /**
  * Internal dependencies

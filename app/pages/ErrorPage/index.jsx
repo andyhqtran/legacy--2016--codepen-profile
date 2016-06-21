@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import React from 'react';
+import React, { PropTypes } from 'react';
 import cx from 'classnames';
 
 /**
@@ -9,6 +9,12 @@ import cx from 'classnames';
  */
 import './style.scss';
 import Card, { CardContent } from '../../components/Card';
+
+const propTypes = {
+  className: PropTypes.string,
+};
+
+const defaultProps = {};
 
 const ErrorPage = (props) => {
   let classes = cx({
@@ -26,5 +32,8 @@ const ErrorPage = (props) => {
     </div>
   );
 };
+
+ErrorPage.propTypes = propTypes;
+ErrorPage.defaultProps = defaultProps;
 
 export default ErrorPage;

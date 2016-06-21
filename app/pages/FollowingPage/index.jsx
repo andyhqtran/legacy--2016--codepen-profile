@@ -8,10 +8,17 @@ import $ from 'jquery';
  * Internal dependencies
  */
 import './style.scss';
-import { Column } from '../../components/Grid';
-import Card, { CardHeader, CardThumbnail, CardContent, CardFooter } from '../../components/Card';
+import Card, { CardThumbnail, CardContent, CardFooter } from '../../components/Card';
 import Button from '../../components/Button';
 import Loader from '../../components/Loader';
+
+const propTypes = {
+  user: PropTypes.string,
+};
+
+const defaultProps = {
+  user: 'andytran',
+};
 
 class FollowingPage extends Component {
   constructor() {
@@ -87,7 +94,10 @@ class FollowingPage extends Component {
             <div className="follower__avatar">
               <img src={follower.avatar} alt={follower.nicename} />
             </div>
-            <div className="follower__title" dangerouslySetInnerHTML={{ __html: follower.nicename }} />
+            <div
+              className="follower__title"
+              dangerouslySetInnerHTML={{ __html: follower.nicename }}
+            />
             <div className="follower__sub-title">@{follower.username}</div>
           </div>
         </CardContent>
@@ -107,11 +117,16 @@ class FollowingPage extends Component {
       <div className="page page--following">
         {this.state.followers.length > 0 ?
           this.state.followers.map(this._renderCard) : ''}
-        {this.state.hasFollowers ? '' : <Card className="card--error"><CardContent>No followers available.</CardContent></Card>}
+        {this.state.hasFollowers ?
+          '' :
+          <Card className="card--error"><CardContent>No followers available.</CardContent></Card>}
         {this.state.loading ? <Loader /> : ''}
       </div>
     );
   }
 }
+
+FollowingPage.propTypes = propTypes;
+FollowingPage.defaultProps = defaultProps;
 
 export default FollowingPage;
