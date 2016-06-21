@@ -8,6 +8,7 @@ import $ from 'jquery';
  * Internal dependencies
  */
 import './style.scss';
+import { numberWithCommas } from '../../helpers';
 import ChatboxIcon from '../../assets/img/icon-chatbox.svg';
 import EyeIcon from '../../assets/img/icon-eye.svg';
 import HeartIcon from '../../assets/img/icon-heart.svg';
@@ -100,15 +101,15 @@ class PensPage extends Component {
         <CardFooter>
           <div className="card__info card__info--hearts">
             <span className="card__icon" dangerouslySetInnerHTML={{ __html: HeartIcon }} />
-            {pen.loves}
+            {numberWithCommas(pen.loves)}
           </div>
           <div className="card__info card__info--comments">
             <div className="card__icon" dangerouslySetInnerHTML={{ __html: ChatboxIcon }} />
-            {pen.comments}
+            {numberWithCommas(pen.comments)}
           </div>
           <div className="card__info card__info--view">
             <div className="card__icon" dangerouslySetInnerHTML={{ __html: EyeIcon }} />
-            {pen.views}
+            {numberWithCommas(pen.views)}
           </div>
         </CardFooter>
       </Card>

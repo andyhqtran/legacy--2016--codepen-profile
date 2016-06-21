@@ -8,6 +8,7 @@ import $ from 'jquery';
  * Internal dependencies
  */
 import './style.scss';
+import { numberWithCommas } from '../../helpers';
 import TrendingIcon from '../../assets/img/icon-trending.svg';
 import Card, { CardHeader, CardContent, CardFooter } from '../Card';
 import Button from '../Button';
@@ -84,7 +85,7 @@ class TrendingCard extends Component {
           <div className="trending__title">
             <a href={item.url}>{item.title}</a>
           </div>
-          <div className="trending__likes">{item.views} views</div>
+          <div className="trending__likes">{numberWithCommas(item.views)} views</div>
         </div>
       </div>
     );
