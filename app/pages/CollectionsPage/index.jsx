@@ -23,18 +23,20 @@ class CollectionsPage extends Component {
       loading: true,
       page: 1,
     };
+
+    this._getLocation = this._getLocation.bind(this);
   }
 
   componentWillMount() {
     this._getPopularCollections();
 
-    window.addEventListener('scroll', this._getLocation.bind(this));
+    window.addEventListener('scroll', this._getLocation);
   }
 
   componentWillUnmount() {
     this.serverRequest.abort();
 
-    window.removeEventListener('scroll', this._getLocation());
+    window.removeEventListener('scroll', this._getLocation);
   }
 
   _getPopularCollections() {
