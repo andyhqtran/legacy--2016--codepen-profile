@@ -12,8 +12,10 @@ import { numberWithCommas } from '../../helpers';
 import ChatboxIcon from '../../assets/img/icon-chatbox.svg';
 import EyeIcon from '../../assets/img/icon-eye.svg';
 import HeartIcon from '../../assets/img/icon-heart.svg';
+import ShareIcon from '../../assets/img/icon-share.svg';
 import Card, { CardHeader, CardThumbnail, CardContent, CardFooter } from '../../components/Card';
 import Loader from '../../components/Loader';
+import Menu from '../../components/Menu';
 
 const propTypes = {
   user: PropTypes.string,
@@ -95,6 +97,25 @@ class PensPage extends Component {
   }
 
   _renderCard(pen, index) {
+    let social = [
+      {
+        value: 'Facebook',
+        onClick: () => window.open(`https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fcodepen.io/${pen.user.username}/pen/${pen.id}%2F`, 'name', 'height=300,width=500'),
+      },
+      {
+        value: 'Twitter',
+        onClick: () => window.open(`https://twitter.com/intent/tweet?url=http%3A%2F%2Fcodepen.io/${pen.user.username}/pen/${pen.id}%2F&text=Check out ${pen.title} by @helloandytran on @codepen&hashtags=web,development,frontend`, 'name', 'height=300,width=500'),
+      },
+      {
+        value: 'LinkedIn',
+        onClick: () => window.open(`http://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2Fcodepen.io/${pen.user.username}/pen/${pen.id}%2F&title=${pen.title}`, 'name', 'height=300,width=500'),
+      },
+      {
+        value: 'Google+',
+        onClick: () => window.open(`https://plus.google.com/share?url=http%3A%2F%2Fcodepen.io/${pen.user.username}/pen/${pen.id}%2F`, 'name', 'height=300,width=500'),
+      },
+    ];
+
     return (
       <Card key={`pen-${index}`}>
         <CardHeader>
@@ -119,6 +140,10 @@ class PensPage extends Component {
           <div className="card__info card__info--view">
             <div className="card__icon" dangerouslySetInnerHTML={{ __html: EyeIcon }} />
             {numberWithCommas(pen.views)}
+          </div>
+          <div className="card__info card__info--share" style={{ position: 'relative' }}>
+            <div className="card__icon" dangerouslySetInnerHTML={{ __html: ShareIcon }} />
+            <Menu items={social} />
           </div>
         </CardFooter>
       </Card>
