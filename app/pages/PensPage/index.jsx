@@ -75,7 +75,16 @@ class PensPage extends Component {
 
   _getLocation() {
     if (this.state.canLoad) {
-      if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+      const windowHeight = window.innerHeight;
+      const windowOffset = window.pageYOffset;
+      const documentHeight = Math.max(
+        document.body.offsetHeight,
+        document.body.scrollHeight,
+        document.documentElement.offsetHeight,
+        document.documentElement.scrollHeight
+      );
+
+      if (windowOffset + windowHeight === documentHeight) {
         this.setState({
           loading: true,
         });
