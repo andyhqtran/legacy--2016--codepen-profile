@@ -14,6 +14,14 @@ import HeartIcon from '../../assets/img/icon-heart.svg';
 import Card, { CardHeader, CardContent, CardFooter } from '../../components/Card';
 import Loader from '../../components/Loader';
 
+const propTypes = {
+  user: PropTypes.string,
+};
+
+const defaultProps = {
+  user: 'andytran',
+};
+
 class PostsPage extends Component {
   constructor() {
     super();
@@ -66,7 +74,16 @@ class PostsPage extends Component {
 
   _getLocation() {
     if (this.state.canLoad) {
-      if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+      const windowHeight = window.innerHeight;
+      const windowOffset = window.pageYOffset;
+      const documentHeight = Math.max(
+        document.body.offsetHeight,
+        document.body.scrollHeight,
+        document.documentElement.offsetHeight,
+        document.documentElement.scrollHeight
+      );
+
+      if (windowOffset + windowHeight === documentHeight) {
         this.setState({
           loading: true,
         });
@@ -114,5 +131,8 @@ class PostsPage extends Component {
     );
   }
 }
+
+PostsPage.propTypes = propTypes;
+PostsPage.defaultProps = defaultProps;
 
 export default PostsPage;
