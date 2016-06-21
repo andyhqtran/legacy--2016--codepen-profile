@@ -25,17 +25,19 @@ class PostsPage extends Component {
       page: 1,
       posts: [],
     };
+
+    this._getLocation = this._getLocation.bind(this);
   }
   componentWillMount() {
     this._getPopularPosts();
 
-    window.addEventListener('scroll', this._getLocation());
+    window.addEventListener('scroll', this._getLocation);
   }
 
   componentWillUnmount() {
     this.serverRequest.abort();
 
-    window.removeEventListener('scroll', this._getLocation());
+    window.removeEventListener('scroll', this._getLocation);
   }
 
   _getPopularPosts() {
@@ -63,15 +65,13 @@ class PostsPage extends Component {
 
   _getLocation() {
     if (this.state.canLoad) {
-      $(window).scroll(() => {
-        if ($(window).scrollTop() + $(window).height() === $(document).height()) {
-          this.setState({
-            loading: true,
-          });
+      if ($(window).scrollTop() + $(window).height() === $(document).height()) {
+        this.setState({
+          loading: true,
+        });
 
-          this._getPopularPosts(this.state.page);
-        }
-      });
+        this._getPopularPosts(this.state.page);
+      }
     }
   }
 
