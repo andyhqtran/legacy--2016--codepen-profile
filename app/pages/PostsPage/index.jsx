@@ -28,6 +28,7 @@ class PostsPage extends Component {
 
     this._getLocation = this._getLocation.bind(this);
   }
+
   componentWillMount() {
     this._getPopularPosts();
 
