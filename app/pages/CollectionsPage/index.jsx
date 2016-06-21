@@ -31,7 +31,7 @@ class CollectionsPage extends Component {
     window.addEventListener('scroll', this._getLocation.bind(this));
   }
 
-  componentWillUmount() {
+  componentWillUnmount() {
     this.serverRequest.abort();
 
     window.removeEventListener('scroll', this._getLocation());

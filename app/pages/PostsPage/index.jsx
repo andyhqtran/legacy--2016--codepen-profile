@@ -32,7 +32,7 @@ class PostsPage extends Component {
     window.addEventListener('scroll', this._getLocation());
   }
 
-  componentWillUmount() {
+  componentWillUnmount() {
     this.serverRequest.abort();
 
     window.removeEventListener('scroll', this._getLocation());
