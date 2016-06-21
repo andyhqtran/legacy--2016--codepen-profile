@@ -16,7 +16,10 @@ import PostsPage from './pages/PostsPage';
 import ErrorPage from './pages/ErrorPage';
 
 const Routes = (
-  <Router history={browserHistory}>
+  <Router
+    history={browserHistory}
+    onUpdate={() => window.scrollTo(0, 0)}
+  >
     <Route path="/" component={AppContainer}>
       <IndexRoute component={PensPage} />
       <Redirect from="pens" to="/" />
