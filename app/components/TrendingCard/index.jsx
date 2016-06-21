@@ -41,7 +41,7 @@ class TrendingCard extends Component {
     this._getTrendingData();
   }
 
-  componentWillUmount() {
+  componentWillUnmount() {
     this.serverRequest.abort();
   }
 

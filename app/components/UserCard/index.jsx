@@ -49,7 +49,7 @@ class UserCard extends Component {
     this._getPensCount();
   }
 
-  componentWillUmount() {
+  componentWillUnmount() {
     this.serverRequest.abort();
   }
 
