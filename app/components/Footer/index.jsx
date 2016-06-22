@@ -61,6 +61,13 @@ const Footer = (props) => {
       },
       {
         anchor: true,
+        url: 'mailto:hello@andytran.me' +
+          '?subject=Uh-oh! There\'s a bug on you\'re website!' +
+          '?body=Hey Andy!<br><br>&nbsp;',
+        children: 'Bugs',
+      },
+      {
+        anchor: true,
         url: 'http://cpv2api.com/',
         children: 'API',
       },
