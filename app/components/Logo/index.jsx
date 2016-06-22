@@ -24,6 +24,7 @@ const propTypes = {
 const defaultProps = {
   color: '#000',
   height: 24,
+  style: {},
 };
 
 const Logo = (props) => {

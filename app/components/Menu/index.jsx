@@ -14,6 +14,7 @@ import './style.scss';
  */
 const propTypes = {
   className: PropTypes.string,
+  items: PropTypes.array,
   style: PropTypes.object,
 };
 
@@ -42,16 +43,8 @@ class Menu extends Component {
 
   render() {
     let classes = cx('menu', this.props.className);
-    let items = this.props.items || [
-      {
-        url: 'no',
-        value: 'hi',
-      },
-      {
-        value: 'wow',
-        onClick: () => console.log('test'),
-      },
-    ];
+    const items = this.props.items || [];
+
     return (
       <div
         className={classes}
