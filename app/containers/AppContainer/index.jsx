@@ -90,6 +90,11 @@ class AppContainer extends Component {
     if (this.state.windowWidth <= 768) {
       return (
         <div className="app app--mobile">
+          <Header
+            className="header--mobile"
+            fixed={this.state.fixedHeader}
+            windowWidth={this.state.windowWidth}
+          />
           {this.props.children && cloneElement(this.props.children, {
             user: this.state.user,
           })}

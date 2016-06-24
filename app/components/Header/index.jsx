@@ -64,7 +64,7 @@ const Header = (props) => {
     <header className={classes}>
       <Container>
         <div className="header__content">
-          <Nav menus={menu} />
+          {props.windowWidth >= 768 || !props.windowWidth ? <Nav menus={menu} /> : false}
           <Link to="/">
             <Logo color="#2C2C2C" />
           </Link>
