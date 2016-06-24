@@ -16,6 +16,11 @@ import SuggestionsCard from '../../components/SuggestionsCard';
 import TrendingCard from '../../components/TrendingCard';
 import UserCard from '../../components/UserCard';
 
+import { TabBar } from '../../components/Mobile';
+
+/**
+ * Local variables
+ */
 const propTypes = {
   children: PropTypes.node,
 };
@@ -82,6 +87,17 @@ class AppContainer extends Component {
   }
 
   render() {
+    if (this.state.windowWidth <= 768) {
+      return (
+        <div className="app app--mobile">
+          {this.props.children && cloneElement(this.props.children, {
+            user: this.state.user,
+          })}
+          <TabBar />
+        </div>
+      );
+    }
+
     return (
       <div className="app">
         <Header fixed={this.state.fixedHeader} />
