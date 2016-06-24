@@ -2,6 +2,7 @@
  * External dependencies
  */
 import React, { Component, PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 
 /**
  * Internal dependencies
@@ -23,11 +24,13 @@ const defaultProps = {
 };
 
 class ProfilePage extends Component {
-  render() {
+  componentWillReceiveProps() {
     if (this.props.windowWidth > 768) {
-      return this.props.history.push('/');
+      return browserHistory.push('/');
     }
+  }
 
+  render() {
     return (
       <div className="page page--profile">
         {this.props.windowWidth <= 768 ?

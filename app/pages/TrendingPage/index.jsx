@@ -2,6 +2,7 @@
  * External dependencies
  */
 import React, { Component, PropTypes } from 'react';
+import { browserHistory } from 'react-router';
 import $ from 'jquery';
 
 /**
@@ -51,6 +52,12 @@ class TrendingPage extends Component {
     this.serverRequest.abort();
 
     window.removeEventListener('scroll', this._getLocation);
+  }
+
+  componentWillReceiveProps() {
+    if (this.props.windowWidth > 768) {
+      return browserHistory.push('/');
+    }
   }
 
   _getPopularPens() {
@@ -129,10 +136,6 @@ class TrendingPage extends Component {
   }
 
   render() {
-    if (this.props.windowWidth > 768) {
-      return this.props.history.push('/');
-    }
-
     return (
       <div className="page page--pens">
         {this.state.pens.length > 0 ?
