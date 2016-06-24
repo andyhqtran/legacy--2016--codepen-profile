@@ -43,6 +43,8 @@
           bottom: auto;
           left: auto;
         }
+
+        &:focus,
         &:hover {
           .menu {
             display: block;

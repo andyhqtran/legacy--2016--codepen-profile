@@ -97,6 +97,7 @@ class AppContainer extends Component {
           />
           {this.props.children && cloneElement(this.props.children, {
             user: this.state.user,
+            windowWidth: this.state.windowWidth,
           })}
           <TabBar />
         </div>
@@ -118,6 +119,7 @@ class AppContainer extends Component {
             <Column size={this.state.windowWidth >= 960 ? 6 : 8}>
               {this.props.children && cloneElement(this.props.children, {
                 user: this.state.user,
+                windowWidth: this.state.windowWidth,
               })}
             </Column>
             {this.state.windowWidth >= 960 ?
