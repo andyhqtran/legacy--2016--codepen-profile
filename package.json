@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "postinstall": "npm run build",
+    "start": "node index.js",
+    "start-dev": "webpack-dev-server",
     "build": "NODE_ENV=production webpack --config webpack.config.production.babel.js --progress -p",
     "lint": "eslint app/**/*.{jsx,js}",
     "test": "npm run lint"
@@ -32,6 +34,7 @@
     "classnames": "^2.2.5",
     "clean-webpack-plugin": "^0.1.9",
     "css-loader": "^0.23.1",
+    "express": "^4.14.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "jquery": "^3.0.0",
