@@ -15,6 +15,7 @@ import './style.scss';
  */
 const propTypes = {
   className: PropTypes.string,
+  items: PropTypes.array,
   menus: PropTypes.array,
 };
 

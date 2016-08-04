@@ -28,6 +28,8 @@ class ProfilePage extends Component {
     if (this.props.windowWidth > 768) {
       return browserHistory.push('/');
     }
+
+    return false;
   }
 
   render() {

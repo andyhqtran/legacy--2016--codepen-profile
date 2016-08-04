@@ -13,13 +13,15 @@ import ExpirementIcon from '../../../../assets/img/icon-expirement.svg';
 import PostsIcon from '../../../../assets/img/icon-posts.svg';
 import SmileIcon from '../../../../assets/img/icon-smile.svg';
 import TrendingIcon from '../../../../assets/img/icon-trending.svg';
-import ThunderboltIcon from '../../../../assets/img/icon-thunderbolt.svg';
 import Nav from '../Nav';
 
 /**
  * Local variables
  */
-const propTypes = {};
+const propTypes = {
+  className: PropTypes.string,
+};
+
 const defaultProps = {};
 
 /**

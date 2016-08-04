@@ -20,6 +20,7 @@ const propTypes = {
   className: PropTypes.string,
   fixed: PropTypes.bool,
   style: PropTypes.object,
+  windowWidth: PropTypes.number,
 };
 
 const defaultProps = {

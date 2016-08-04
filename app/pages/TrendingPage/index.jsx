@@ -23,6 +23,7 @@ const propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   style: PropTypes.object,
+  windowWidth: PropTypes.number,
 };
 
 const defaultProps = {};
@@ -48,16 +49,18 @@ class TrendingPage extends Component {
     window.addEventListener('scroll', this._getLocation);
   }
 
-  componentWillUnmount() {
-    this.serverRequest.abort();
-
-    window.removeEventListener('scroll', this._getLocation);
-  }
-
   componentWillReceiveProps() {
     if (this.props.windowWidth > 768) {
       return browserHistory.push('/');
     }
+
+    return false;
+  }
+
+  componentWillUnmount() {
+    this.serverRequest.abort();
+
+    window.removeEventListener('scroll', this._getLocation);
   }
 
   _getPopularPens() {
