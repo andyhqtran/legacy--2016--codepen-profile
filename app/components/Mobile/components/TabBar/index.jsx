@@ -12,7 +12,7 @@ import CollectionsIcon from '../../../../assets/img/icon-collections.svg';
 import ExpirementIcon from '../../../../assets/img/icon-expirement.svg';
 import PostsIcon from '../../../../assets/img/icon-posts.svg';
 import SmileIcon from '../../../../assets/img/icon-smile.svg';
-import TrendingIcon from '../../../../assets/img/icon-trending.svg';
+import ThunderBoltIcon from '../../../../assets/img/icon-thunderbolt.svg';
 import Nav from '../Nav';
 
 /**
@@ -50,7 +50,7 @@ const TabBar = (props) => {
     {
       url: '/trending',
       children: 'Trending',
-      icon: TrendingIcon,
+      icon: ThunderBoltIcon,
     },
     {
       url: '/profile',
