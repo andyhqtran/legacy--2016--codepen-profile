@@ -3,13 +3,11 @@ import webpack from 'webpack';
 import precss from 'precss';
 import autoprefixer from 'autoprefixer';
 import CleanWebpackPlugin from 'clean-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import HtmlWebpackPluginTemplate from 'html-webpack-template';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build'),
+  build: path.join(__dirname, 'public'),
 };
 
 const config = {
@@ -54,13 +52,7 @@ const config = {
       verbose: true,
       dry: false,
     }),
-    new HtmlWebpackPlugin({
-      inject: false,
-      template: HtmlWebpackPluginTemplate,
-      appMountId: 'root',
-      mobile: true,
-    }),
-    new ExtractTextPlugin('style.css', {
+    new ExtractTextPlugin('bundle.css', {
       allChunks: true,
     }),
     new webpack.optimize.UglifyJsPlugin(),
