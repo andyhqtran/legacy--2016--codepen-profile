@@ -11,7 +11,7 @@
     "npm": ">=6.3.0"
   },
   "scripts": {
-    "postinstall": "npm run build",
+    "postinstall": "",
     "start": "node index.js",
     "build": "",
     "prebuild": "npm run lint",
