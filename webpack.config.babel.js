@@ -1,69 +1,52 @@
+/**
+ * External dependencies
+ */
 import path from 'path';
 import webpack from 'webpack';
-import CleanWebpackPlugin from 'clean-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import HtmlWebpackPluginTemplate from 'html-webpack-template';
 
+/**
+ * Local variables
+ */
 const PATHS = {
-  app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build'),
+  app: path.join(__dirname, 'client/index.js'),
+  build: path.join(__dirname, 'public'),
 };
 
+/**
+ * Webpack config
+ */
 const config = {
-  entry: PATHS.app,
+  entry: [
+    'webpack-hot-middleware/client',
+    PATHS.app,
+  ],
   output: {
     path: PATHS.build,
+    publicPath: '/',
     filename: 'bundle.js',
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  devtool: 'eval-source-map',
-  devServer: {
-    contentBase: PATHS.build,
-    historyApiFallback: true,
-    hot: true,
-    inline: true,
-    progress: true,
-    states: 'errors-only',
-    host: process.env.HOST,
-    port: process.env.PORT || 3000,
-  },
+  devtool: '#source-map',
   module: {
     loaders: [
       {
-        test: /\.(jpg|png)$/,
-        loader: 'file?name=[path][name].[ext]',
-      },
-      {
-        test: /\.svg$/,
-        loader: 'raw',
-      },
-      {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
-        loaders: ['react-hot', 'babel'],
+        loader: 'babel',
       },
       {
-        test: /\.scss$/i,
+        test: /\.(sass|scss)$/i,
         exclude: /node_modules/,
-        loaders: ['style', 'css?sourceMap', 'sass?sourceMap'],
+        loader: 'style!css?sourceMap!sass?sourceMap',
       },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(['dist', 'build'], {
-      root: __dirname,
-      verbose: true,
-      dry: false,
-    }),
-    new HtmlWebpackPlugin({
-      inject: false,
-      template: HtmlWebpackPluginTemplate,
-      appMountId: 'root',
-      mobile: true,
-    }),
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
   ],
 };
 
