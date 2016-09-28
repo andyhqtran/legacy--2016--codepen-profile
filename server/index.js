@@ -77,9 +77,12 @@ app.use((req, res) => {
         <html>
             <head>
               <meta charset="utf-8" />
+              ${head.htmlAttributes}
               ${head.title}
+              ${head.base}
               ${head.meta}
               ${head.link}
+              ${head.script}
               <link href="/bundle.css?v=${config.version}" rel="stylesheet" type="text/css">
             </head>
             <body>
