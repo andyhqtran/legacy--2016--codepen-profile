@@ -8,6 +8,7 @@ import { Router, browserHistory } from 'react-router';
 /**
  * Internal dependencies
  */
+import './style.scss';
 import config from '../config';
 import routes from '../lib/routes';
 

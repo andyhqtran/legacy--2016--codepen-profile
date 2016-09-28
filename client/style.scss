@@ -1,0 +1,12 @@
+@import '../lib/modules/base';
+
+body {
+  background: $white;
+  color: $text-primary;
+  font-family: $body-font;
+  font-size: 0.875rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: $font-regular;
+  line-height: 1.125rem;
+}
