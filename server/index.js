@@ -1,4 +1,5 @@
 /* eslint no-console: ["error", { allow: ["warn", "error", "info"] }] */
+/* eslint-disable import/no-extraneous-dependencies */
 
 /**
  * External dependencies
@@ -17,10 +18,9 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 /**
  * Internal dependencies
  */
-import App from '../lib/containers/App/App';
 import config from '../config';
 import routes from '../lib/routes';
-import webpackConfig from '../webpack.config.babel.js';
+import webpackConfig from '../webpack.config.babel';
 
 /**
  * Local variables

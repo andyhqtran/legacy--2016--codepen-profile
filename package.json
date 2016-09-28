@@ -6,10 +6,16 @@
   "scripts": {
     "postinstall": "npm run build",
     "start": "node index.js",
-    "start-dev": "node index.js",
     "build": "NODE_ENV=production webpack --config webpack.config.production.babel.js --progress -p",
-    "lint": "eslint app/**/*.{jsx,js}",
-    "test": "npm run lint"
+    "prebuild": "npm run lint",
+    "lint": "npm run lint-js && npm run lint-sass",
+    "lint-sass": "sass-lint -c .sass-lint.yml -i '**/node_modules/**' '**/*.scss' -v",
+    "lint-js": "eslint client lib server",
+    "pretest": "npm run lint",
+    "test": "npm run test-lib",
+    "test-client": "mocha client/**/test/*.js --compilers js:babel-register,js:./test/css-modules-compiler.js --recursive",
+    "test-lib": "mocha lib/**/test/*.js --compilers js:babel-register,js:./test/css-modules-compiler.js --recursive",
+    "test-server": "mocha server/**/test/*.js --compilers js:babel-register,js:./test/css-modules-compiler.js --recursive"
   },
   "repository": {
     "type": "git",
@@ -23,7 +29,7 @@
   },
   "homepage": "https://github.com/andyhqtran/codepen-profile#readme",
   "dependencies": {
-    "autoprefixer": "6.3.6",
+    "autoprefixer": "6.5.0",
     "autoprefixer-loader": "3.2.0",
     "babel-core": "6.14.0",
     "babel-loader": "6.2.5",
@@ -45,17 +51,19 @@
     "react-helmet": "3.1.0",
     "react-motion": "0.4.5",
     "react-router": "2.8.1",
-    "sass-loader": "3.2.0",
+    "sass-loader": "4.0.2",
     "style-loader": "0.13.1",
     "webpack": "1.13.2"
   },
   "devDependencies": {
-    "eslint": "2.12.0",
-    "eslint-config-airbnb": "9.0.1",
-    "eslint-plugin-import": "1.8.1",
-    "eslint-plugin-jsx-a11y": "1.4.2",
-    "eslint-plugin-react": "5.1.1",
+    "bithound": "1.7.0",
+    "eslint": "3.6.1",
+    "eslint-config-airbnb": "12.0.0",
+    "eslint-plugin-import": "1.16.0",
+    "eslint-plugin-jsx-a11y": "2.2.2",
+    "eslint-plugin-react": "6.3.0",
     "react-hot-loader": "3.0.0-beta.5",
+    "sass-lint": "1.9.1",
     "webpack-dev-middleware": "1.8.3",
     "webpack-hot-middleware": "2.12.2"
   }
