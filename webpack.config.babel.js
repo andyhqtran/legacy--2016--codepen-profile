@@ -17,7 +17,7 @@ const PATHS = {
  */
 const config = {
   entry: [
-    'webpack-hot-middleware/client',
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
     PATHS.app,
   ],
   output: {

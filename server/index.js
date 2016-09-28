@@ -38,15 +38,12 @@ const compiler = webpack(webpackConfig);
  */
 if (config.env === 'development') {
   app.use(webpackDevMiddleware(compiler, {
+    hot: true,
     noInfo: true,
     publicPath: webpackConfig.output.publicPath,
   }));
 
-  app.use(webpackHotMiddleware(compiler, {
-    log: console.log,
-    path: '/__webpack_hmr',
-    heartbeat: 10 * 1000,
-  }));
+  app.use(webpackHotMiddleware(compiler));
 }
 
 /**
