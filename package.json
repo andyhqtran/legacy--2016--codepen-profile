@@ -16,7 +16,7 @@
     "build": "NODE_ENV=production webpack --config webpack.config.production.babel.js --progress -p",
     "prebuild": "npm run lint",
     "lint": "npm run lint-js && npm run lint-sass",
-    "lint-sass": "sass-lint -c .sass-lint.yml -i '**/node_modules/**' '**/*.scss' -v",
+    "lint-sass": "sass-lint -c .sass-lint.yml -i '**/{node_modules,app}/**' '**/*.scss' -v",
     "lint-js": "eslint client lib server",
     "pretest": "npm run lint",
     "test": "npm run test-lib",
