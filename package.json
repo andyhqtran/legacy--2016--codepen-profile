@@ -3,6 +3,13 @@
   "version": "0.0.2",
   "description": "",
   "main": "index.js",
+  "os": [
+    "darwin",
+    "linux"
+  ],
+  "engines": {
+    "npm": ">=6.3.0"
+  },
   "scripts": {
     "postinstall": "npm run build",
     "start": "node index.js",
