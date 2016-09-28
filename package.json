@@ -13,7 +13,7 @@
   "scripts": {
     "postinstall": "npm run build",
     "start": "node index.js",
-    "build": "NODE_ENV=production webpack --config webpack.config.production.babel.js --progress -p",
+    "build": "",
     "prebuild": "npm run lint",
     "lint": "npm run lint-js && npm run lint-sass",
     "lint-sass": "sass-lint -c .sass-lint.yml -i '**/{node_modules,app}/**' '**/*.scss' -v",
