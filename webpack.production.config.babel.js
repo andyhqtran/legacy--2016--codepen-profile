@@ -3,6 +3,7 @@
  */
 import path from 'path';
 import webpack from 'webpack';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 /**
  * Local variables
@@ -17,7 +18,6 @@ const PATHS = {
  */
 const config = {
   entry: [
-    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
     PATHS.app,
   ],
   output: {
@@ -28,18 +28,17 @@ const config = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
   },
-  devtool: '#source-map',
   module: {
     loaders: [
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
-        loader: 'babel',
+        loader: 'babel?compact=true',
       },
       {
         test: /\.(sass|scss)$/i,
         exclude: /node_modules/,
-        loader: 'style!css?sourceMap!sass?sourceMap',
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!sass?sourceMap'),
       },
     ],
   },
@@ -47,11 +46,15 @@ const config = {
     new webpack.DefinePlugin({
       'process.env': {
         BROWSER: JSON.stringify(true),
-        NODE_ENV: JSON.stringify('development'),
+        NODE_ENV: JSON.stringify('production'),
       },
     }),
+    new ExtractTextPlugin('bundle.css'),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 15 }),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.MinChunkSizePlugin({ minChunkSize: 10000 }),
+    new webpack.optimize.UglifyJsPlugin(),
     new webpack.NoErrorsPlugin(),
   ],
 };
