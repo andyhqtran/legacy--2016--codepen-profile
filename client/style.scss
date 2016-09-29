@@ -10,3 +10,7 @@ body {
   font-weight: $font-regular;
   line-height: 1.125rem;
 }
+
+@import '../lib/components/Button/Button';
+@import '../lib/components/Logo/Logo';
+@import '../lib/components/Sidebar/Sidebar';
