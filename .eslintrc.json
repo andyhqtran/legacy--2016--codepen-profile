@@ -8,13 +8,14 @@
       "react"
   ],
   "rules": {
+    "global-require": 1,
     "react/jsx-filename-extension": [
       1, {
         "extensions": [".js", ".jsx"]
       }
     ],
     "no-underscore-dangle": [
-      "error", {
+      2, {
         "allowAfterThis": true
       }
     ]

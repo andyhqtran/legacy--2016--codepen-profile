@@ -8,6 +8,7 @@ const config = {};
 /**
  * Configuration
  */
+config.browser = env.BROWSER || false;
 config.env = env.NODE_ENV || 'development';
 config.name = env.NAME || 'Andy Tran';
 config.port = env.PORT || 3000;
