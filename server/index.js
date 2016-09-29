@@ -56,7 +56,7 @@ if (config.env === 'production') {
 /**
  * Serve static files
  */
-app.use('assets', express.static(PATHS.public));
+app.use(express.static(PATHS.public));
 
 /**
  * Request handler
