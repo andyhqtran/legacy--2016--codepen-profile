@@ -62,4 +62,8 @@
       color: darken($primary, 10%);
     }
   }
+
+  &--round {
+    border-radius: 100px;
+  }
 }
