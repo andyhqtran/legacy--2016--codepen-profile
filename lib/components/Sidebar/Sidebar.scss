@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   background: #F6F8FA;
-  width: 240px;
+  width: 256px;
   height: 100%;
 
   &__top {
@@ -36,5 +36,33 @@
   &__content {
     flex-grow: 1;
     padding: 24px 0 0;
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    padding: 0 16px;
+
+    .button {
+      height: 59px;
+      border-top: 1px solid #D3D8DC;
+      border-radius: 0;
+      line-height: 59px;
+
+      &:hover {
+        color: $text-primary;
+      }
+
+      &--active {
+        border-color: $primary;
+        color: $primary;
+        font-weight: $font-semibold;
+        cursor: auto;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
   }
 }
