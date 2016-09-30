@@ -1,0 +1,18 @@
+// Header
+.header {
+  display: flex;
+  flex-direction: row;
+  height: 136px;
+  padding: 0 40px;
+  box-sizing: border-box;
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: $font-regular;
+    line-height: 2rem;
+  }
+
+  &__content {
+    flex-grow: 1;
+  }
+}
