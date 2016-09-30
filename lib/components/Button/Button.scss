@@ -22,6 +22,11 @@
   &:hover {
     color: $primary;
   }
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
 }
 
 // Button (Color)
