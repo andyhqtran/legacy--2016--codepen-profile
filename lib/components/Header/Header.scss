@@ -1,13 +1,25 @@
 // Header
 .header {
+  position: relative;
   height: 136px;
   padding: 0 40px;
   box-sizing: border-box;
 
+  &:before {
+    content: ' ';
+    position: absolute;
+    right: 278px;
+    bottom: 0;
+    left: 40px;
+    display: block;
+    height: 1px;
+    box-shadow: 0 1px #EFEFEF;
+  }
+
   &__top {
     display: flex;
     flex-direction: row;
-    margin: 40px 0 0;
+    padding: 40px 0 0;
   }
 
   &__title {
@@ -20,5 +32,10 @@
 
   &__content {
     flex-grow: 1;
+  }
+
+  &__bottom {
+    position: absolute;
+    bottom: 0;
   }
 }
